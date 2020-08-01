@@ -27,9 +27,6 @@ body {
 }
 
 /* container */
-.container {
-  border-radius: 10px;
-}
 .container1 {
   width: 300px;
   display: block;
