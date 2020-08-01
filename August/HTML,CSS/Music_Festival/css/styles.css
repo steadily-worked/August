@@ -1,0 +1,63 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.hero-header {
+  background-image: url('../images/hero_image.jpg');
+  background-repeat: no-repeat;
+  background-position: center top;
+  position: relative;
+  height: 684px;
+}
+/* 세로 가운데 정렬을 위해서 */
+.hero-header .helper {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
+#navbar {
+  padding: 10px 20px;
+  position: absolute;
+  top: 0;
+}
+
+#logo {
+  color: white;
+  font-size: 28px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.info {
+  color: white;
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+  vertical-align: middle;
+}
+
+.info h1 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 40px;
+}
+
+.info h2 {
+  margin-top: 0;
+  margin-bottom: 50px;
+  font-size: 20px;
+  font-weight: normal;
+}
+
+.learn-more {
+  border: 2px solid white;
+  padding: 8px 40px;
+  text-decoration: none;
+  color: white;
+}
