@@ -1,0 +1,11 @@
+img {
+  display: block;
+  margin: 0 auto;
+}
+
+
+.mongsoong {
+  position: relative;
+  left: 200px;
+  bottom: 100px;
+}
