@@ -1,0 +1,77 @@
+* {
+  box-sizing: border-box;
+  font-family: 'BMJUA';
+  background-color: #F0E8D9;
+}
+@font-face { 
+  Src: url('../fonts/BMJUA_otf.otf'); 
+  Font-family: 'BMJUA'
+} 
+body {
+  width: 630px;
+  color: #58595b;
+  margin: 0 auto;
+}
+/* title */
+.title {
+  text-align: center;
+  margin: 75px auto;
+}
+.title > h1 {
+  font-size: 64px;
+  margin-bottom: 30px;
+  margin-top: 0px;
+}
+.title > h2 {
+  font-size: 32px;
+  margin: 0px;
+}
+
+/* container */
+.container1 {
+  display: flex;
+  flex-direction: row;
+}
+.container2 {
+  display: flex;
+}
+.chicken, .sushi, .burger, .bibimbap {
+  width: 300px;
+  display: inline-block;
+  margin-bottom: 50px;
+}
+.chicken, .burger {
+  margin-right: 30px;
+}
+.container1-img {
+  display: block;
+  margin: 0 auto;
+  width: 300px;
+  height: 200px;
+  border-radius: 10px 10px 0px 0px;
+}
+.container1-explanation {
+  text-align: center;
+  width: 100%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 0px 0px 10px 10px;
+}
+.container1-explanation > h2 {
+  font-size: 32px;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  background-color: white;
+}
+.container1-explanation > h3 {
+  text-align: left;
+  font-size: 16px;
+  background-color: white;
+  margin-bottom: 16px;
+  margin-top: 0px;
+}
+.container1-explanation > a {
+  color: #0000ee;
+  background-color: white;
+  text-decoration: none;
+}

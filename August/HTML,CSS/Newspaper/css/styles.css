@@ -1,0 +1,50 @@
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* 제목 */
+.title {
+  text-align: center;
+  border-bottom: 1px solid #eee;
+  margin: 0;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+/* 기사 본문 */
+.content {
+  font-size: 18px;
+  width: 70%;
+  max-width: 900px;
+  margin: 50px auto;
+}
+
+/* 링크 */
+.link {
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  font-weight: bold;
+  padding: 15px 10px;
+}
+
+.link a {
+  color: #222;
+  text-decoration: none;
+}
+
+/* 코드잇 광고 */
+.codeit {
+  float: left;
+  margin-right: 15px;
+  margin-bottom: 15px;
+  width: 180px;
+}
+
+/* 야너두 광고 */
+.youtoo {
+  float: right;
+  width: 180px;
+  margin-left: 15px;
+  margin-bottom: 15px;
+}
