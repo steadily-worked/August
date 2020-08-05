@@ -226,3 +226,12 @@ fs.readFile(`data/${queryData.id}`, 'utf-8', function(err, description) {
 8. home이 아닌 곳에 대한 조건문이므로, var title = queryData.id; 처리를 해줘야 한다.
 
 9. 여기까지 하고 서버를 껐다 키고 나면, home 페이지에 갔을 때 전부 undefined 처리 됐었던 제목과 내용이 전부 내가 나타내고 싶었던 말로 적용돼 있는 것을 확인할 수 있다.
+
+### Node.js-20.JavaScript-반복문(Loop statement)
+
+1. copy를 통한 수동 반복을 통해 반복을 할 수도 있지만, 몇 번 반복하는 지 횟수가 코딩 시작 시점에 알 수 없다면, 반복문을 이용해야 한다.
+
+2. while(true)의 경우 무조건 참이기 때문에 안에 출력 명령 코드가 있다면 무한루프가 된다. 그래서, var i = 0; 이런식으로 while문 밖에서 지정을 하고 while (i < 10) 이런식으로 반복문을 시작을 한 후 반복문 마지막에 i = i + 1을 넣어주면 i가 0에서부터 계속 커지다가 마침내 (i < 10) 이 거짓인 명제가 될 때 while문을 종료하고 그 다음 명령으로 넘어가게 된다.
+
+### Node.js-22.JavaScript-배열과 반복문 (Array & Loop)
+
