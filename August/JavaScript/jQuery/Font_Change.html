@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Travel Website</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <img id="logo" src="images/logo.png" width="165" height="58">
+ 
+  <div id="menu">
+    <a onclick "clickHome();" id='home'>Home</a>
+    <a onclick ="clickSeoul();" id='seoul'>Seoul</a>
+    <a onclick ="clickTokyo();" id='tokyo'>Tokyo</a>
+    <a onclick ="clickParis();" id='paris'>Paris</a>
+  </div>
+
+  <img id="photo" src="images/home.png" width="90%">
+
+  <script>
+    // 사진을 바꿔주는 함수
+    function clickHome() {
+      document.getElementById('photo').src = 'images/home.png';
+      document.getElementById('home').style.fontWeight = 'bold';
+      document.getElementById('seoul').style.fontWeight = 'normal';
+      document.getElementById('tokyo').style.fontWeight = 'normal';
+      document.getElementById('paris').style.fontWeight = 'normal';
+    }
+
+    function clickSeoul() {
+      document.getElementById('photo').src = 'images/seoul.png';
+      document.getElementById('home').style.fontWeight = 'normal';
+      document.getElementById('seoul').style.fontWeight = 'bold';
+      document.getElementById('tokyo').style.fontWeight = 'normal';
+      document.getElementById('paris').style.fontWeight = 'normal';
+    }
+
+    function clickTokyo() {
+      document.getElementById('photo').src = 'images/tokyo.png';
+      document.getElementById('home').style.fontWeight = 'normal';
+      document.getElementById('seoul').style.fontWeight = 'normal';
+      document.getElementById('tokyo').style.fontWeight = 'bold';
+      document.getElementById('paris').style.fontWeight = 'normal';
+    }
+    
+    function clickParis() {
+      document.getElementById('photo').src = 'images/paris.png';
+      document.getElementById('home').style.fontWeight = 'normal';
+      document.getElementById('seoul').style.fontWeight = 'normal';
+      document.getElementById('tokyo').style.fontWeight = 'normal';
+      document.getElementById('paris').style.fontWeight = 'bold';
+    }
+  </script>
+</body>
+</html>
