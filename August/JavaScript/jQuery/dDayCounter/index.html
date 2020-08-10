@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Couple Story</title>
+    <meta charset="utf-8" />
+    <link href="css/styles.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div class="navbar">
+      <img id="logo" src="images/logo.png" width="157">
+    </div>
+
+    <div class="main">
+      <div class="container">
+        <!-- 만난지 며칠? -->
+        <h2>만난지 <span id="day-count">00</span>일째</h2>
+
+        <div class="img-row">
+          <img src="images/female.png" width="148">
+          <img src="images/dot.png" width="8">
+          <img src="images/dot.png" width="8">
+          <img src="images/heart.png" width="16">
+          <img src="images/dot.png" width="8">
+          <img src="images/dot.png" width="8">
+          <img src="images/male.png" width="148">
+        </div>
+
+        <!-- 만나기 시작한 날짜 -->
+        <div class="date-row">
+          <label for="start">시작일</label>
+          <input type="date" name="start" id="start">
+        </div>
+
+        <!-- 며칠됐는지 계산하기! -->
+        <button id="calculate">결과 보기</button>
+      </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"></script>
+    <script>
+      $('#calculate').on('click', inputFunction);
+      function inputFunction() {
+        var now = new Date();
+        var startDate = new Date($('#start').val());
+        if ($('#start').val() === '') {
+          alert('시작 날짜를 입력해주세요!');
+        }
+        var time = (now.getTime() - startDate.getTime())/1000/60/60/24;
+        $('#day-count').text(Math.floor(time)+1);
+    }
+    </script>
+  </body>
+</html>

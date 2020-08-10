@@ -2,7 +2,264 @@
 
 ### 1. Math 정리 노트
 
-- 절댓값
+1. 절댓값
+Math.abs(x)를 하면 x의 절댓값이 리턴된다.
 
         console.log(Math.abs(-10)); -> 10
         console.log(Math.abs(10)); -> 10
+
+2. 최댓값
+
+Math.max 함수에 파라미터로 여러 수를 넘겨주면, 그 중 가장 큰 값이 리턴된다.
+
+        console.log(Math.max(2, -1, 4, 5, 0)); -> 5
+
+3. 최솟값
+
+Math.min 함수에 파라미터로 여러 수를 넘겨주면, 그 중 가장 작은 값이 리턴된다.
+
+        console.log(Math.min(2, -1, 4, 5, 0)); -> -1
+
+4. 거듭제곱 (Exponentiation)
+
+Math.pow(x, y)를 하면 x의 y제곱 결과값이 리턴된다.
+
+        console.log(Math.pow(2, 3)); -> 8
+        console.log(Math.pow(5, 2)); -> 25
+
+5. 제곱근 (Square Root)
+
+Math.sqrt(x)를 하면 x의 제곱근(루트 씌운것)이 리턴된다.
+
+        console.log(Math.sqrt(25)); -> 5
+        console.log(Math.sqrt(49)); -> 7
+
+6. 반올림 (Round)
+
+Math.round(x)를 하면 x의 반올림된 값이 리턴된다.
+
+        console.log(Math.round(2.3)); -> 2
+        console.log(Math.round(2.4)); -> 2
+        console.log(Math.round(2.49)); -> 2
+        console.log(Math.round(2.5)); -> 3
+        console.log(Math.round(2.6)); -> 3
+
+7. 버림과 올림 (Floor and Ceil)
+
+Math.floor(x)를 하면 x의 버림 값이, Math.ceil(x)를 하면 x의 올림 값이 리턴된다.
+
+        console.log(Math.floor(2.4)); -> 2
+        console.log(Math.floor(2.49)); -> 2
+        console.log(Math.floor(2.8)); -> 2
+        console.log('-'); -> -
+        console.log(Math.ceil(2.4)); -> 3
+        console.log(Math.ceil(2.49)); -> 3
+        console.log(Math.ceil(2.8)); -> 3
+
+8. 난수 (Random)
+
+Math.random을 하면 0 이상 1 미만의 값이 랜덤으로 리턴된다.
+
+        console.log(Math.random()); -> 0.21458369059793236
+        console.log(Math.random()); -> 0.6622040803059857
+        console.log(Math.random()); s-> 0.785172717569619
+        console.log(Math.random()); -> 0.9056556038884926
+
+### 2. String 정리 노트
+
+1. 문자열의 길이
+
+length 속성은 문자열의 길이를 담고 있다.
+
+        var str = 'Codeit';
+        console.log(str.length); -> 6
+
+2. 특정 인덱스의 문자 받아오기
+
+str.charAt(index)를 하면 문자열 str의 index 인덱스에 있는 문자를 받아올 수 있다. str[index]와 같은 셈이다.
+
+        var str = 'Codeit';
+        console.log(str.charAt(2)); -> d
+
+3. 문자열 안에서 다른 문자열 검색
+
+str.indexOf(searchValue)를 하면 문자열 str 내에 문자열 searchValue가 포함되어 있는지 확인할 수 있다.
+
+- 만약 포함되어 있다면 문자열이 시작되는 문자의 인덱스가 리턴된다.
+- 포함되어 있지 않다면 -1이 리턴된다.
+- 여러 번 포함되어 있으면, 처음 발견된 인덱스가 리턴된다.
+
+        var str = 'Hello World!';
+
+        console.log(str.indexOf('e')); -> 1
+        console.log(str.indexOf('z')); -> -1
+        console.log(str.indexOf('ello')); -> 1
+        console.log(str.indexOf('o')); -> 4
+
+4. 마지막 인덱스 찾기
+
+lastIndexOf는 indexOf와 동일한데, 가장 뒤에 위치한 검색 결과를 찾아준다.indexOf에서는 여러 번 나오는 문자에 대해 가장 앞에 있는 것을, lastIndexOf는 가장 뒤에 있는 것의 위치를 리턴해준다는 차이가 있다.
+
+        var str = 'Hello World!';
+
+        console.log(str.indexOf('o')); -> 4
+        console.log(str.lastIndexOf('o')); -> 7
+
+5. 대소문자 변환
+
+str.toUpperCase()를 하면 str의 모든 글자가 대문자로 바뀌어서 리턴되고,<br>str.toLowerCase()를 하면 str의 모든 글자가 소문자로 바뀌어서 리턴된다.
+
+        var str = 'Codeit';
+        console.log(str.toUpperCase()); -> CODEIT
+        var str = 'Codeit';
+        console.log(str.toLowerCase()); -> codeit
+
+6. 문자열 자르기
+
+6-1. 시작 지점과 끝 지점으로 자르기
+
+str.substring(indexStart, indexEnd)를 하면 인덱스 indexStart부터 인덱스 indexEnd전까지의 문자열을 잘라서 만든 새로운 문자열이 리턴된다. 만약 indexEnd를 쓰지 않으면, 인덱스 indexStart부터 끝까지 문자열이 잘린다.
+
+        var str = 'Hello World!';
+
+        console.log(str.substring(2, 5)); -> llo
+        console.log(str.substring(2)); -> llo World!
+
+6-2. 시작 지점과 길이로 자르기
+
+str.substr(start, length)를 하면 인덱스 start부터 길이 length의 문자열이 잘려서 리턴된다.
+
+        var str = 'Hello World!';
+
+        console.log(str.substr(2, 5)); -> llo W
+
+6-3. 앞뒤의 공백을 없애기
+
+str.trim()을 하면 문자열 str의 앞뒤로 있는 '공백(띄어쓰기, 들여쓰기, 줄바꿈 등)'을 모두 지운 새로운 문자열이 리턴된다.
+
+        var str = '        Hello World!      ';
+
+        console.log(str.trim()); -> Hello World!
+
+
+### 3. Array 정리 노트
+
+1. 배열의 길이
+
+length 속성은 배열의 길이를 담고 있다.
+
+        var brands = ['Apple', 'Coca-Cola', 'Starbucks'];
+        console.log(brands.length); -> 3
+
+2. 배열에서 특정 값 찾기
+
+문자열에서 썼던 indexOf가 배열에서도 똑같이 동작한다. array.indexOf(item)을 하면 array 배열에 item이 포함되어 있는지 확인할 수 있다.
+
+- 만약 포함되어 있다면 item이 있는 인덱스가 리턴된다.
+- 포함되어 있지 않다면 -1이 리턴된다.
+- 여러 번 포함되어 있으면, 처음 발견된 인덱스가 리턴된다.
+
+        var brands = ['Apple', 'Coca-Cola', 'Starbucks'];
+        console.log(brands.indexOf('Starbucks')); -> 2
+        console.log(brands.indexOf('Kakao')); -> -1
+
+3. 배열에 값 추가
+
+array.push(item1)을 하면 item1이 array 배열의 끝에 추가된다.<br>array.push(item1, item2, item3)를 하면 item1, item2, item3이 array 배열의 끝에 순서대로 추가된다.
+
+        var brands = ['Apple', 'Coca-Cola', 'Starbucks'];
+
+        brands.push('Kakao');
+        console.log(brands); -> ['Apple', 'Coca-Cola', 'Starbucks', 'Kakao']
+
+
+        brands.push('Samsung', 'LG', 'Facebook');
+        console.log(brands); -> ['Apple', 'Coca-Cola', 'Starbucks', 'Kakao', 'Samsung', 'LG', 'Facebook']
+
+4. 배열에서 값 빼기
+
+array.pop()을 하면 배열 array의 마지막 요소가 배열에서 빠지고, 그 마지막 요소가 리턴된다.
+
+        var brands = ['Apple', 'Coca-Cola', 'Starbucks'];
+
+        var lastBrand = brands.pop();
+
+        console.log(lastBrand); -> Starbucks
+        console.log(brands); -> ['Apple', 'Coca-Cola']
+
+5. 배열을 문자열로 바꾸기
+
+4번에 이어서, brands.join()을 하면 모든 내용이 하나로 합쳐진다.
+
+        var brands = ['Apple', 'Coca-Cola', 'Starbucks'];
+        console.log(brands.join()); -> Apple,Coca-Cola,Starbucks
+
+만약 값들 사이에 들어가는 쉼표가 마음에 들지 않으면, 쉼표를 대체할 문자열을 파라미터로 넣어주면 된다.
+
+
+        var brands = ['Apple', 'Coca-Cola', 'Starbucks'];
+        console.log(brands.join('###')); -> Apple###Coca-Cola###Starbucks
+
+### 4. Date 정리 노트
+
+날짜와 관련된 프로그램을 짜고 싶으면 Date 객체를 이용하면 된다.
+
+1. 객체 만들기
+
+우선 객체를 만들어야 활용을 할 수 있다. 객체를 만드는 법은 두가지가 있다.
+
+1-1. 현재 날짜로 설정
+
+파라미터 없이 new Date()를 하면 현재 날짜로 설정되어 있는 Date 객체가 생성돼서 리턴된다.
+
+                var date = new Date();
+
+1-2. 원하는 날짜로 설정
+
+파라미터를 써주면 원하는 날짜로 설정할 수도 있다. 만약 날짜만 쓸 경우, 0시 0분 0초로 지정된다.
+
+                // 1988년 6월 11일 5시 25분 30초
+                var date1 = new Date('June 11, 1988 05:25:30');
+                var date2 = new Date('1988-06-11T05:25:30');
+
+                // 1999년 12월 15일 (날짜만)
+                var date3 = new Date('1999-12-15');
+                var date4 = new Date('12/15/1999');
+                var date5 = new Date('December 15 1999');
+                var date6 = new Date('Dec 15 1999');
+
+2. 날짜 정보 받아오기
+
+이제 Date 객체의 메소드들을 활용하면 되는데, 매우 다양한 기능들이 있다.
+
+                var date = new Date('June 11, 1988 05:25:30');
+
+                console.log(date.getFullYear()); -> 1988
+                console.log(date.getMonth()); -> 5
+                console.log(date.getDate()); -> 11
+                console.log(date.getDay()); -> 6
+                console.log(date.getHours()); -> 5
+                console.log(date.getMinutes()); -> 25
+                console.log(date.getSeconds()); -> 30
+                console.log(date.getMilliseconds()); -> 0
+                console.log(date.toString()); -> Sat Jun 11 1988 05:25:30 GMT+1000 (KDT)
+                console.log(date.toLocaleString()); -> 6/11/1988, 5:25:30 AM
+                console.log(date.toLocaleDateString()); -> 6/11/1988
+                console.log(date.toLocaleTimeString()); -> 5:25:30 AM
+
+getTime() 메소드는 1970년 1월 1일 자정으로부터 몇 ms가 지났는지 알려준다.
+
+                var date = new Date('June 11, 1988 05:25:30');
+                console.log(date.getTime()); -> 581973930000
+
+이 ms 값에 나눗셈을 적절히 사용하면 초, 분, 시, 일 등의 단위로 변환할 수 있다.
+
+                var date = new Date('June 11, 1988 05:25:30'); 
+                console.log(date.getTime() + 'ms'); -> 581973930000ms
+                console.log(date.getTime()/1000 + '초'); -> 581973930초
+                console.log(date.getTime()/1000/60 + '분'); -> 9699565.5분
+                console.log(date.getTime()/1000/60/60 + '시간'); -> 161659.425시간
+
+2-1. 주의할 점
+
+getMonth()의 경우 0부터 시작하기 때문에 2는 3월을 의미한다. 또 getDay()는 날짜가 아니라 요일을 리턴해 주고, 일요일인 0부터 시작해서, 3은 수요일을 뜻한다.
