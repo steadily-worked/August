@@ -212,54 +212,110 @@ array.pop()을 하면 배열 array의 마지막 요소가 배열에서 빠지고
 
 파라미터 없이 new Date()를 하면 현재 날짜로 설정되어 있는 Date 객체가 생성돼서 리턴된다.
 
-                var date = new Date();
+        var date = new Date();
 
 1-2. 원하는 날짜로 설정
 
 파라미터를 써주면 원하는 날짜로 설정할 수도 있다. 만약 날짜만 쓸 경우, 0시 0분 0초로 지정된다.
 
-                // 1988년 6월 11일 5시 25분 30초
-                var date1 = new Date('June 11, 1988 05:25:30');
-                var date2 = new Date('1988-06-11T05:25:30');
+        // 1988년 6월 11일 5시 25분 30초
+        var date1 = new Date('June 11, 1988 05:25:30');
+        var date2 = new Date('1988-06-11T05:25:30');
 
-                // 1999년 12월 15일 (날짜만)
-                var date3 = new Date('1999-12-15');
-                var date4 = new Date('12/15/1999');
-                var date5 = new Date('December 15 1999');
-                var date6 = new Date('Dec 15 1999');
+        // 1999년 12월 15일 (날짜만)
+        var date3 = new Date('1999-12-15');
+        var date4 = new Date('12/15/1999');
+        var date5 = new Date('December 15 1999');
+        var date6 = new Date('Dec 15 1999');
 
 2. 날짜 정보 받아오기
 
 이제 Date 객체의 메소드들을 활용하면 되는데, 매우 다양한 기능들이 있다.
 
-                var date = new Date('June 11, 1988 05:25:30');
+        var date = new Date('June 11, 1988 05:25:30');
 
-                console.log(date.getFullYear()); -> 1988
-                console.log(date.getMonth()); -> 5
-                console.log(date.getDate()); -> 11
-                console.log(date.getDay()); -> 6
-                console.log(date.getHours()); -> 5
-                console.log(date.getMinutes()); -> 25
-                console.log(date.getSeconds()); -> 30
-                console.log(date.getMilliseconds()); -> 0
-                console.log(date.toString()); -> Sat Jun 11 1988 05:25:30 GMT+1000 (KDT)
-                console.log(date.toLocaleString()); -> 6/11/1988, 5:25:30 AM
-                console.log(date.toLocaleDateString()); -> 6/11/1988
-                console.log(date.toLocaleTimeString()); -> 5:25:30 AM
+        console.log(date.getFullYear()); -> 1988
+        console.log(date.getMonth()); -> 5
+        console.log(date.getDate()); -> 11
+        console.log(date.getDay()); -> 6
+        console.log(date.getHours()); -> 5
+        console.log(date.getMinutes()); -> 25
+        console.log(date.getSeconds()); -> 30
+        console.log(date.getMilliseconds()); -> 0
+        console.log(date.toString()); -> Sat Jun 11 198805:25:30 GMT+1000 (KDT)
+        console.log(date.toLocaleString()); -> 6/11/1988,5:25:30 AM
+        console.log(date.toLocaleDateString()); -> 6/11/1988
+        console.log(date.toLocaleTimeString()); -> 5:25:30 AM
 
 getTime() 메소드는 1970년 1월 1일 자정으로부터 몇 ms가 지났는지 알려준다.
 
-                var date = new Date('June 11, 1988 05:25:30');
-                console.log(date.getTime()); -> 581973930000
+        var date = new Date('June 11, 1988 05:25:30');
+        console.log(date.getTime()); -> 581973930000
 
 이 ms 값에 나눗셈을 적절히 사용하면 초, 분, 시, 일 등의 단위로 변환할 수 있다.
 
-                var date = new Date('June 11, 1988 05:25:30'); 
-                console.log(date.getTime() + 'ms'); -> 581973930000ms
-                console.log(date.getTime()/1000 + '초'); -> 581973930초
-                console.log(date.getTime()/1000/60 + '분'); -> 9699565.5분
-                console.log(date.getTime()/1000/60/60 + '시간'); -> 161659.425시간
+        var date = new Date('June 11, 1988 05:25:30'); 
+        console.log(date.getTime() + 'ms'); -> 581973930000ms
+        console.log(date.getTime()/1000 + '초'); -> 581973930초
+        console.log(date.getTime()/1000/60 + '분'); ->9699565.5분
+        console.log(date.getTime()/1000/60/60 + '시간'); ->161659.425시간
 
 2-1. 주의할 점
 
 getMonth()의 경우 0부터 시작하기 때문에 2는 3월을 의미한다. 또 getDay()는 날짜가 아니라 요일을 리턴해 주고, 일요일인 0부터 시작해서, 3은 수요일을 뜻한다.
+
+
+### 5. Audio 다루기
+
+소리가 필요할 때, Audio 객체를 사용하면 소리를 재생할 수 있다.
+
+1. 소리 재생하고 정지하기
+
+        var audioFile = new Audio("file location or url"); // 생성
+        audioFile.play(); // 재생
+        audioFile.pause(); // 정지
+
+우리가 소리를 사용할 때, 소리의 상태는 크게 '생성', '재생', '정지' 총 3단계로 나눌 수 있다.
+
+        <script>
+        var audioFile = new Audio("https://d34x6xks9kc6p2.cloudfront.net/540997b0-a35f-4b69-86d6-b1c925c4a264/540997b0-a35f-4b69-86d6-b1c925c4a264.mp3");
+
+        function playMusic() {
+        audioFile.play();
+        }
+
+        function stopMusic() {
+        audioFile.pause();
+        }
+
+        $('#playBtn').on('click', playMusic);
+        $('#stopBtn').on('click', stopMusic);
+        </script>
+
+이렇게 하면 간단하게 구현할 수 있다. 물론 각 버튼 id에 대한 디자인 구현이 되어있다는 전제.
+
+2. 처음부터 재생하기
+
+위 코드에서 '재생', '정지'를 누르다 보면 처음부터 다시 재생되는 게 아니라 일시정지했다가 재생이 된다. 일시정지가 아니라 아예 정지를 하고 싶은 경우
+
+        audioFile.currentTime = 0; // 오디오 파일 재생 위치 설정
+
+이렇게 작성하면 오디오 파일이 재생될 곳을 선택할 수 있다.
+
+        <script> 
+        var audioFile = new Audio("https://d34x6xks9kc6p2.cloudfront.net/540997b0-a35f-4b69-86d6-b1c925c4a264/540997b0-a35f-4b69-86d6-b1c925c4a264.mp3");
+
+        function playMusic() {
+        audioFile.play();
+        }
+
+        function stopMusic() {
+        audioFile.pause();
+        audioFile.currentTime = 0; // '멈춤' 버튼을 누른 후에는 오디오의 시작 지점을 처음으로 다시 돌려주기.
+        }
+
+        $('#playBtn').on('click', playMusic);
+        $('#stopBtn').on('click', stopMusic);
+        </script> 
+
+이렇게 할 경우, 정지 버튼을 누르고 다시 플레이 버튼을 누르면 처음부터 재생이 된다.
