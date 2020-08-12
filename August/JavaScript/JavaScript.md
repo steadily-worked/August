@@ -302,7 +302,7 @@ getMonth()의 경우 0부터 시작하기 때문에 2는 3월을 의미한다. �
 
 이렇게 작성하면 오디오 파일이 재생될 곳을 선택할 수 있다.
 
-        <script> 
+        <script>
         var audioFile = new Audio("https://d34x6xks9kc6p2.cloudfront.net/540997b0-a35f-4b69-86d6-b1c925c4a264/540997b0-a35f-4b69-86d6-b1c925c4a264.mp3");
 
         function playMusic() {
