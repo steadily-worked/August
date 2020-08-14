@@ -1,0 +1,59 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  text-align: center;
+  margin: 0;
+  background: url('../images/background.jpg') center center/cover no-repeat;
+  min-width: 768px;
+  height: 100vh;
+}
+
+/* 깃발과 버튼 세로 가운데 정렬*/
+
+body::before {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.container {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* 깃발 */
+
+.flags {
+  text-align: center;
+}
+
+.flags .flag {
+  margin: 0 10px;
+}
+
+.flags .flag.down {
+  /* 깃발 내렸을 때 30도 회전 */
+  transform: rotate(30deg);
+}
+
+/* 버튼 */
+
+.buttons {
+  text-align: center;
+  margin-top: 160px;
+}
+
+.buttons button {
+  width: 222px;
+  height: 38px;
+  border-radius: 9px;
+  border: none;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+  margin: 0 4px;
+  font-size: 14px;
+}
