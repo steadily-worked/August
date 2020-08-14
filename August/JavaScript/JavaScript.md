@@ -1,6 +1,6 @@
-## JavaScript 정리 노트
+# JavaScript 정리 노트
 
-### 1. Math 정리 노트
+## 1. Math 정리 노트
 
 1. 절댓값
 Math.abs(x)를 하면 x의 절댓값이 리턴된다.
@@ -65,7 +65,7 @@ Math.random을 하면 0 이상 1 미만의 값이 랜덤으로 리턴된다.
         console.log(Math.random()); s-> 0.785172717569619
         console.log(Math.random()); -> 0.9056556038884926
 
-### 2. String 정리 노트
+## 2. String 정리 노트
 
 1. 문자열의 길이
 
@@ -142,7 +142,7 @@ str.trim()을 하면 문자열 str의 앞뒤로 있는 '공백(띄어쓰기, 들
         console.log(str.trim()); -> Hello World!
 
 
-### 3. Array 정리 노트
+## 3. Array 정리 노트
 
 1. 배열의 길이
 
@@ -200,7 +200,7 @@ array.pop()을 하면 배열 array의 마지막 요소가 배열에서 빠지고
         var brands = ['Apple', 'Coca-Cola', 'Starbucks'];
         console.log(brands.join('###')); -> Apple###Coca-Cola###Starbucks
 
-### 4. Date 정리 노트
+## 4. Date 정리 노트
 
 날짜와 관련된 프로그램을 짜고 싶으면 Date 객체를 이용하면 된다.
 
@@ -265,7 +265,7 @@ getTime() 메소드는 1970년 1월 1일 자정으로부터 몇 ms가 지났는�
 getMonth()의 경우 0부터 시작하기 때문에 2는 3월을 의미한다. 또 getDay()는 날짜가 아니라 요일을 리턴해 주고, 일요일인 0부터 시작해서, 3은 수요일을 뜻한다.
 
 
-### 5. Audio 다루기
+## 5. Audio 다루기
 
 소리가 필요할 때, Audio 객체를 사용하면 소리를 재생할 수 있다.
 
@@ -321,7 +321,7 @@ getMonth()의 경우 0부터 시작하기 때문에 2는 3월을 의미한다. �
 이렇게 할 경우, 정지 버튼을 누르고 다시 플레이 버튼을 누르면 처음부터 재생이 된다.
 
 
-### 6. Boolean의 활용
+## 6. Boolean의 활용
 
 1. undefined와 null
 
@@ -429,3 +429,72 @@ but 위의 것을 활용하면 이렇게 바꿀 수 있다.
         var str = '';
         console.log(!str); ->true
         console.log(!!str); -> false
+
+## 7. jQuery
+
+### 1. DOM
+
+다양한 방식으로 DOM 객체 선택하기 / DOM 트리에 요소 추가하고 빼기 / DOM 트리의 요소 변형시키기 를 배울 것.
+
+jQuery로 어떤 요소에 대한 동작을 하고 싶을 땐, 요소를 선택하는 부분 / 요소를 동작하는 부분 으로 두 개를 나눠서 둘다 작성해야 한다.
+
+        $('#hello').on('click', sayHello);
+        $('#hello').text();
+        $('#hello').css('background', '#7f8ff4');
+
+이 세 개의 코드를 보자. 이 것을,
+
+        // 선택 //     .   // 동작 //
+        $('#hello')   .   on('click', sayHello);
+        $('#hello')   .   text();
+        $('#hello')   .   css('background', '#7f8ff4');
+
+으로 나눌 수 있다. hello라는 id에<br>1. click시 sayHello함수 실행<br>2.텍스트부분 보여주기<br>3. 배경색을 #7f8ff4로 바꾸기 를 각각 동작하게 하는 것.
+
+jQuery는 정확히 말하면, 프로그래밍 언어가 아니라 <b>자바스크립트 라이브러리</b>이다. 즉, jQuery는 <b>여러 가지 함수와 변수가 정의되어 있는 자바스크립트 파일</b>이다.
+
+함수 $가 리턴하는 값은 무엇일까..? $는 일반 배열에서는 못쓰고 jQuery 객체를 위해 특별히 만들어진 함수이다.
+
+
+### 2. jQuery의 '동작'
+
+jQuery는 '선택' + '동작' 으로 이뤄진다고 했다. 이 '동작' 부분에 해당하는 다양한 메소드가 있다. 이 메소드를 활용하면 우리가 원하는 요소에 클래스를 추가/제거하거나, 속성을 읽고 쓰거나, 스타일을 입히는 것도 가능하다.
+
+#### 1. 클래스 관련
+
+        // item에 header이라는 클래스 추가
+        $('#item').addClass('header');
+
+        // item에 header이라는 클래스 제거
+        $('#item').removeClass('header');
+
+        // item에 header이라는 클래스가 없으면 추가, 있으면 제거
+        $('#item').toggleClass('header');
+
+        // item에 header라는 클래스가 있으면 true, 없으면 false 리턴
+        $("#item").hasClass('header');
+
+#### 2. 속성 관련
+
+        // 이미지 태그의 src 속성 받아오기
+        $('img').attr('src');
+
+        // 이미지 태그의 src 속성 지정하기
+        $('img').attr('src', 'images/logo.png');
+
+        // h1 태그의 텍스트 받아오기
+        $('h1').text();
+
+        // h1 태그에 텍스트 지정하기
+        $('h1').text('Hello World!');
+
+        // h1 태그에 HTML 텍스트 지정하기
+        $('h1').html('<b>Hello World!</b>');
+
+#### 3. 스타일 관련
+
+        // item의 font-weight를 bold로 지정하기
+        $("#item").css('font-weight','bold');
+
+        // item의 background-color 가져오기
+        $("#item").css('background-color');
