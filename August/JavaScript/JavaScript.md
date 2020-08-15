@@ -498,3 +498,28 @@ jQuery는 '선택' + '동작' 으로 이뤄진다고 했다. 이 '동작' 부분
 
         // item의 background-color 가져오기
         $("#item").css('background-color');
+
+### 3. jQuery에 요소 추가하기
+
+jQuery를 사용하면 쉽게 새로운 요소를 추가할 수 있다.
+        $('ul li:first-child').before("<li class='item'>어떤 요소</li>");
+
+before 함수에 넘겨주는 파라미터를 자세히 보자.
+
+문자열이기 때문에 따옴표('...')로 둘러싸여 있는데, 그 안에도 따옴표('item')가 있다. 이 코드에서 바깥쪽 따옴표는 큰따옴표이고 안쪽 따옴표는 작은따옴표이기 때문에 오류 없이 작동한다. 두 개가 바뀌어도 아무 문제가 없다.
+
+but.. 작은 따옴표 안에 작은 따옴표를 쓰면 문제가 생긴다.
+
+        // 오류!
+        $('ul li:first-child').before('<li class='item'>어떤 요소</li>');
+        이제 <li class='item'>어떤 요소</li>에서 '<li class=' 까지가 문자열로 인식되기 때문이다.
+
+꼭 작은 따옴표 안에 작은 따옴표를 쓰고 싶다면 문자열 안에 있는 따옴표 앞에 백슬래시('\')를 써주면 된다.
+
+        // 문제 해결!
+        $('ul li:first-child').before('<li class=\'item\'>어떤 요소</li>');
+
+마찬가지로 큰 따옴표 안에 큰 따옴표를 쓰고 싶어도 백슬래시로 해결할 수 있다.
+
+        // 문제 해결!
+        $('ul li:first-child').before("<li class=\"item\">어떤 요소</li>");
