@@ -1,0 +1,49 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 960px;
+  background: #eee;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.container {
+  width: 840px;
+  margin: 0 auto;
+}
+
+.card {
+  float:left;
+  width: 10.5%;
+  margin: 20px 1%;
+  padding: 15px 0;
+  font-size: 28px;
+  text-align: center;
+
+  background: #FAFAFA;
+  box-shadow: 0 0 2px 0 rgba(0,0,0,0.12), 0 2px 2px 0 rgba(0,0,0,0.24);
+  border-radius: 3px;
+}
+
+/* 선택된 카드 */
+.card.selected {
+  background: #3E50B4; /* 파란색 */
+  color: white;
+}
+
+.buttons {
+  text-align: center;
+}
+
+.buttons button {
+  background: none;
+  border: none;
+  margin: 30px 5px;
+  cursor: pointer;
+  outline: none;
+  font-size: 20px;
+  color: #4285F4;
+  font-weight: 500;
+}
