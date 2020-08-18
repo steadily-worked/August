@@ -1,0 +1,276 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #fafafa;
+  font-family: 'Noto Sans KR', sans-serif;
+  min-width: 1200px;
+}
+
+/* navigation bar */
+
+.navbar {
+  background-color: white;
+  height: 59px;
+  line-height: 59px;
+  padding: 0 82px;
+  position: relative;
+}
+
+.navbar .logo {
+  float: left;
+}
+
+.navbar .logo img {
+  vertical-align: middle;
+}
+
+.navbar .navbar-menu {
+  padding: 0;
+  margin: 0 10px;
+  list-style: none;
+}
+
+.navbar .menu-left {
+  float: left;
+}
+
+.navbar .menu-right {
+  float: right;
+}
+
+.navbar .navbar-menu li {
+  display: inline-block;
+  font-size: 16px;
+  margin: 0 10px;
+}
+
+.navbar .navbar-menu li a {
+  color: #4a4a4a;
+  text-decoration: none;
+}
+
+.navbar .search-box {
+  display: inline-block;
+  vertical-align: middle;
+  width: 371px;
+  height: 34px;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  top: 12px;
+  left: 0;
+  right: 0;
+}
+
+.navbar .search-box img {
+  position: absolute;
+  left: 13px;
+  top: 6px;
+}
+
+.navbar .search-box input {
+  display: block;
+  width: 371px;
+  height: 36px;
+  border-radius: 22px;
+  background-color: white;
+  border: solid 1px #4a90e2;
+  padding: 0 51px;
+  font-size: 14px;
+  color: #4a4a4a;
+  outline: none;
+}
+
+/* go to top button */
+
+.to-top-btn {
+  background-color: white;
+  padding: 15px;
+  border: none;
+  outline: none;
+  box-shadow: 0 0 5px 0 rgba(0,0,0,0.05), 0 5px 5px 0 rgba(0,0,0,0.05);
+  border-radius: 50%;
+  cursor: pointer;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1;
+  display: none;
+}
+
+/* container */
+
+.container {
+  width: 992px;
+  margin: 34px auto;
+}
+
+/* popular */
+
+.popular {
+  border-radius: 7px;
+  width: 231px;
+  background-color: white;
+  float: left;
+  margin-right: 24px;
+  padding: 17px 14px;
+}
+
+.popular h2 {
+  font-size: 14px;
+  color: #4a4a4a;
+}
+
+.top10 {
+  counter-reset: counter;
+  padding-left: 0;
+  list-style: none;
+}
+
+.top10 .keyword:not(:last-child) {
+  margin-bottom: 12px;
+}
+
+.top10 .keyword:before {
+  content: counter(counter,decimal-leading-zero);
+  counter-increment: counter;
+  color: white;
+  border-radius: 50%;
+  font-size: 11px;
+  margin-right: 10px;
+  padding: 3px 5px;
+  position: relative;
+  bottom: 2px;
+
+  width: 18px;
+  height: 18px;
+  border-radius: 6px;
+  background-color: #2391e9;
+}
+
+.top10 .keyword:nth-of-type(1n+4):before {
+  background-color: #dbdbdb;
+}
+
+.top10 .keyword a {
+  font-size: 14px;
+  color: #4a4a4a;
+  text-decoration: none;
+}
+
+.top10 .keyword a:hover {
+  text-decoration: underline;
+}
+
+/* playlists */
+
+.playlists {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  float: left;
+}
+
+.playlist {
+  width: 737px;
+  height: 240px;
+  border-radius: 7px;
+  background-color: white;
+  margin-bottom: 35px;
+  position: relative;
+  opacity: 0;
+}
+
+.pl-topic {
+  position: absolute;
+  top: 16px;
+  left: 26px;
+  text-align: center;
+
+  width: 79px;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.64;
+  color: white;
+
+  border-bottom: 1px solid white;
+}
+
+.pl-img {
+  float: left;
+}
+
+.pl-info {
+  float: left;
+  width: 340px;
+  padding: 10px 15px;
+}
+
+.pl-user-img {
+  vertical-align: middle;
+  margin-right: 14px;
+}
+
+.pl-title {
+  display: inline-block;
+  vertical-align: middle;
+  width: 231px;
+  font-weight: 300;
+  line-height: 1.45;
+}
+
+.pl-title a {
+  color: #4a4a4a;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.pl-title a:hover {
+  text-decoration: underline;
+}
+
+.tags {
+  padding: 0;
+  margin: 0;
+
+}
+
+.tags .tag {
+  display: inline;
+  margin-right: 3px;
+  white-space: nowrap;
+}
+
+.tags .tag a {
+  color: #9b9b9b;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.64;
+}
+
+.stats {
+  vertical-align: middle;
+  border-top: solid 0.3px #9b9b9b;
+  padding-top: 11px;
+  margin-top: 11px;
+}
+
+.stats img {
+  vertical-align: middle;
+  margin-right: 9px;
+}
+
+.stats span {
+  vertical-align: middle;
+  margin-right: 20px;
+
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 2.21;
+  text-align: left;
+  color: #4a4a4a;
+}
