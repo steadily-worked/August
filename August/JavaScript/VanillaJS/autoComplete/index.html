@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href='css/styles.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="search-container">
+        <input class="search-input">
+        <svg class="search-button" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+      <path fill="#009eda" d="m25.14381,22.4446l-5.4416,-5.4416c0.7341,-1.2095 1.1629,-2.6229 1.1641,-4.14c-0.0012,-4.4244 -3.583,-8.00627 -8.0039,-8.0086c-4.42316,0.00233 -8.00622,3.5842 -8.00622,8.0074c0,4.4209 3.58305,8.0039 8.00622,8.0039c1.5171,0 2.9317,-0.4299 4.14,-1.1629l5.4428,5.4428l2.6986,-2.701l0,0l0,0zm-17.23357,-9.5828c0.00465,-2.73478 2.21627,-4.94636 4.95097,-4.95219c2.7337,0.00583 4.9463,2.21742 4.951,4.95219c-0.0047,2.7336 -2.2173,4.9453 -4.951,4.9522c-2.7347,-0.0069 -4.94632,-2.2186 -4.95097,-4.9522z" />
+    </svg>
+        <div class="ac-results-wrapper"></div>
+    </div>    
+</body>
+<script>
+    var acData = [{
+  "group": "operating system",
+  "tags": ["BSD", "QNX", "Windows Phone", "z/OS", "Windows", "OSX", "Android", "iOS", "Unix", "Linux"]
+}, {
+  "group": "software",
+  "tags": ["VirtualBox", "VMware", "inDesign", "AutoCAD", "Maya", "Photoshop", "Illustrator", "SVN", "GitHub", "Git"]
+}, {
+  "group": "framework",
+  "tags": ["Google App Engine", "Grails", "Bottle", "Batman", "Cocoa", "Spine", "AngularJS", "Sinatra", "Ruby on Rails", "Bootstrap", "Symfony", "Flask", "Laravel", "Django", "Prototype", "Ext JS", "Dojo", "MooTools", "JQuery", "Backbone", "YUI", "Ember", "Knockout", "Meteor", "Node JS"]
+}, {
+  "group": "language",
+  "tags": ["Clojure", "VBScript", "PowerShell", "Visual Basic", "Wolfram", "MATLAB", "Lua", "XML", "Java", "Smalltalk", "Erlang", "Lisp", "SQL PL/SQL", "Fortran", "COBOL", "GO", "Scala", "Groovy", "CSS", "ASP.NET", "ColdFusion", "PERL", "Haskell", "HTML", "JavaScript", "Ruby", "PHP", "Python", "Objective C", "C#", "C++", "C"]
+}];
+
+var opts = {
+  data: acData,
+  numResults: 10,
+  searchPath: '/search?q=',
+  directPath: '/',
+  container: document.querySelectorAll('.search-container')[0]
+};
+
+var autocomplete = function(options) {
+  var doc = document,
+    data = options.data,
+    contEl = options.container,
+    resultNodes = contEl.getElementsByTagName('A'),
+    cache = {},
+    handlers = {
+      'enter': function(e) {
+        if (e.target.parentNode === contEl && contEl.children[0].value) {
+          window.location = options.searchPath + encodeURIComponent(contEl.children[0].value);
+        }
+      },
+      'up': function(e) {
+        e.preventDefault();
+        if (e.target.previousElementSibling && e.target.previousElementSibling.hasAttribute('href')) {
+          e.target.previousElementSibling.focus();
+        } else if (!e.target.previousElementSibling && e.target.parentNode === contEl.lastElementChild) {
+          contEl.children[0].focus();
+        }
+      },
+      'down': function(e) {
+        e.preventDefault();
+        if (e.target === contEl.children[0]) {
+          contEl.lastElementChild.children[0].focus();
+        } else if (e.target.nextElementSibling && e.target.nextElementSibling.hasAttribute('href')) {
+          e.target.nextElementSibling.focus();
+        }
+      },
+      'input': function(e) {
+        var val = e.target.value.trim().replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+        return val ? insert(cacheFn(val, check)) : insert();
+      }
+    };
+
+  function setEls() {
+    var wrapEl = contEl.querySelectorAll('.ac-results-wrapper')[0];
+    var i = options.numResults;
+    while (i--) {
+      var anchorEl = document.createElement('a');
+      anchorEl.href = '#';
+      anchorEl.innerHTML = 'a<i>i</i>';
+      wrapEl.appendChild(anchorEl);
+    }
+  }
+
+  function cacheFn(q, fn) {
+    return cache[q] ? cache[q] : cache[q] = fn(q), cache[q];
+  }
+
+  function check(q) {
+    var rxFn = function(s) {
+        return '\\b(' + s + ')(.*)';
+      },
+      rx = new RegExp(q.replace(/(\S+)/g, rxFn).replace(/\s+/g, ''), 'gi'),
+      arr = [],
+      i = data.length;
+
+    function testFn(obj) {
+      var j = obj.tags.length;
+      while (j--) {
+        if (rx.test(obj.tags[j])) {
+          arr.push({
+            'tag': obj.tags[j],
+          });
+        }
+      }
+    }
+    while (i--) {
+      testFn(data[i]);
+    }
+    return arr;
+  }
+
+  function insert(d) {
+    var i = options.numResults;
+    while (i--) {
+      if (d && d[i]) {
+        resultNodes[i].style.display = 'block';
+        resultNodes[i].firstChild.nodeValue = d[i].tag;
+        resultNodes[i].href = options.directPath + encodeURIComponent(d[i].tag);
+        resultNodes[i].firstElementChild.firstChild.nodeValue = d[i].group;
+      } else if (!d || !d[i]) {
+        resultNodes[i].style.display = 'none';
+      }
+    }
+  }
+
+  function multiHandler(e) {
+    var k = e.keyCode,
+      //assign a value to k if the up, down enter keys are pressed, or if the event is an input
+      meth = k === 13 ? 'enter' : k === 38 ? 'up' : k === 40 ? 'down' : e.type === 'input' ? 'input' : null;
+    //if 'meth' was assigned a value earlier, return the associated function and pass the event to it
+    return meth ? handlers[meth](e) : null;
+
+  }
+
+  function changeHandler(e) {
+    window.setTimeout(function() {
+      return doc.activeElement.parentNode === contEl || doc.activeElement.parentNode === contEl.lastElementChild ? null : insert();
+    }, 50);
+  }
+  setEls();
+  contEl.addEventListener('input', multiHandler);
+  contEl.addEventListener('keydown', multiHandler);
+  contEl.querySelectorAll('.search-button')[0].addEventListener('click', handlers.enter);
+  contEl.firstElementChild.addEventListener('change', changeHandler);
+};
+
+autocomplete(opts);
+</script>
+</html>
