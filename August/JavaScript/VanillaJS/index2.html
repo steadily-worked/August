@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>                      
+    <input type="text" class="form-control" placeholder="태그 목록" id="text_task">
+    <button type="submit" id="btn_add_task" class="btn btn-primary">추가</button>
+   </form>           
+   <ul id = "list_tasks">
+   </ul>    
+
+</body>
+<script>
+var elements = document.getElementById('element');
+var taskSubmit = document.getElementById('btn_add_task');
+var taskBox = document.getElementById('text_task');
+var taskList = document.getElementById('list_tasks');
+
+// taskSubmit.addEventListener('click', function(e) {
+//     e.preventDefault();
+//     var task = taskBox.value.trim();
+//     var newLI = document.createElement('li');
+//     var element = newLI.appendChild(document.createTextNode(task));
+
+//     if (taskBox.value != "") {
+//         taskList.appendChild(newLI);
+//     }
+//     taskBox.value = '';
+
+// });
+
+
+
+taskSubmit.addEventListener('keydown', function(e) {
+    e.preventDefault();
+    var task = taskBox.value.trim();
+    var newLI = document.createElement('li');
+    var element = newLI.appendChild(document.createTextNode(task));
+    if (e.keyCode === 13) {
+        taskList.appendChild(newLi);
+    }
+    taskBox.value = '';
+});
+</script>
+</html>
