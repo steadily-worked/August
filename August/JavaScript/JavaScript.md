@@ -523,3 +523,62 @@ but.. 작은 따옴표 안에 작은 따옴표를 쓰면 문제가 생긴다.
 
         // 문제 해결!
         $('ul li:first-child').before("<li class=\"item\">어떤 요소</li>");
+
+### 4. JavaScript로 요소 이동 및 삭제하기
+
+        $('#cleaning').before('<li class='item'>피아노</li>);
+를 하면 새롭게 추가 되고, 가장 첫 위치에 들어감.
+        $('#cleaning').before($('#movie'));
+를 하면, movie id는 이미 있었기 때문에 그게 있던 위치에서 맨 앞 위치로 이동만 하게 된다.
+        $('#cleaning').after($('#movie'));
+를 하면, movie id 뒤에 cleaning id가 위치하게 된다.
+        $('#todo-list).append($('#movie'));
+를 하면, 이 li들 전부를 감싼 todo-list의 마지막 자식으로 movie id가 li로서 들어가게 된다. prepend를 하면 맨 위에 위치하게 됨.
+        $('#movie').remove();
+를 하면 사라짐
+
+### 5. 더 '선택'하기
+
+jQuery에는 '선택'과 '동작'이 있고, '선택'을 위한 방법으로 CSS 선택자를 알아보았는데, 이 외에도 jQuery에서 제공하는 '선택' 방법이 있다..
+
+#### 1. filter
+
+        $('button').filter('.color-3').text('SELECTED!');
+
+filter()는 () 안의 조건으로 선택된 요소를 한번 더 걸러준다.<br>위 코드의 경우 모든 button 태그들 중에 color-3이라는 클래스를 갖고 있는 요소만 추려내서 text를 바꿔주라는 의미이다.
+
+#### 2. not
+
+        $('button').not('.color-3').text('SELECTED!');
+
+not()은 filter()의 반대이다. 선택된 요소 중에서 조건에 해당되는 것들을 제외시킨다.<br>위 코드의 경우 모든 button 태그들 중에 color-3이라는 클래스를 갖고 있는 요소만 제외하고 text를 바꿔주라는 의미이다.
+
+#### 3. eq
+
+        $('button').eq(1).text('SELECTED!');
+
+eq()는 선택된 요소들 중에서 n번째 요소 하나만 골라낸다.<br>위 코드의 경우 모든 button 태그 중 두 번째 요소만 골라서 text를 바꿔주라는 의미이다. eq() 안에 들어가는 숫자는 0부터 시작하기 때문에 1일 경우 두 번째 요소라는 점에 유의할 것.
+
+#### 4. parent
+
+        $('#btn-1').parent().css('background-color', 'black');
+
+parent()는 부모 요소를 찾아준다.<br>위 코드의 경우 btn-1의 부모 요소의 배경을 검은색으로 바꿔준다.
+
+#### 5. children
+
+        $('#box-1').children().css('background-color', 'black');
+
+children()은 parent()의 반대이다. 선택된 요소의 자녀 요소를 모두 골라준다.<br>위 코드의 경우 box-1의 모든 자녀 요소에 css를 적용해 준다. () 안에 조건을 넣을 경우  filter 역할도 함께 해준다.
+
+#### 6. find
+
+        $('#box-1').find('.color-2').css('background-color', 'black');
+
+find()는 선택된 요소의 자녀, 자녀의 자녀, ...를 골라주되, 조건에 맞는 요소만 골라서 찾아준다.<br>위 코드의 경우 box-1의 자녀 요소 중 color-2 클래스가 있는 요소의 css를 적용해준다.
+
+#### 7. siblings
+
+        $('#btn-1').siblings().text('SELECTED!');
+
+siblings()는 선택된 요소의 <b>이웃 요소</b>들을 골라준다.<br>위 코드에서는 btn-1의 모든 이웃 요소에 text를 변경해 준다.
