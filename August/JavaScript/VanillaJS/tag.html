@@ -5,43 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="css/styles.css" rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+    <!-- <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script> -->
+
 </head>
 <body>
-    <form>                      
-    <input type="text" class="form-control" placeholder="태그 목록" id="text_task">
-    <button type="submit" id="btn_add_task" class="btn btn-primary">추가</button>
+    <!-- <textarea id='MyID'></textarea> -->
+    <form>
+    <input type="text" autocomplete="off" class="form-control" placeholder="태그 목록" id="text_task">
+    <!-- <button type="submit" id="btn_add_task" class="btn btn-primary">추가</button> -->
    </form>           
    <ul id = "list_tasks">
-   </ul>    
-
+   </ul>
 </body>
 <script>
+// /* JavaScript markdown editor SimpleMDE */
+// var simplemde = new SimpleMDE({ element: document.getElementById("MyID") });
+
+
+/* add Tag by click or press enter */
 var elements = document.getElementById('element');
 var taskSubmit = document.getElementById('btn_add_task');
 var taskBox = document.getElementById('text_task');
 var taskList = document.getElementById('list_tasks');
 
-taskSubmit.addEventListener('click', function(e) {
-    e.preventDefault();
+document.addEventListener('keydown', function(e) {
     var task = taskBox.value.trim();
     var newLI = document.createElement('li');
     var element = newLI.appendChild(document.createTextNode(task));
-
-    if (taskBox.value != "") {
+    if (taskBox.value != "" && (e.keyCode === 188 || e.keyCode === 13))  {
+        e.preventDefault();
         taskList.appendChild(newLI);
+        taskBox.value = '';
     }
-    taskBox.value = '';
-});
+}, false);
 
 
+// 똑같은 태그가 추가되면 안됨
+// , 이용해서도 추가되게 하기
+// // 자동완성
 
-// taskSubmit.addEventListener('keydown', function(e) {
+// document.addEventListener('keyup', function(e) {
 //     e.preventDefault();
 //     var task = taskBox.value.trim();
 //     var newLI = document.createElement('li');
 //     var element = newLI.appendChild(document.createTextNode(task));
-//     if (e.keyCode === 13) {
-//         taskList.appendChild(newLi);
+//     if (taskBox.value != "" || e.keyCode === 13 || e.keyCode === 188) {
+//         taskList.appendChild(newLI);
 //     }
 //     taskBox.value = '';
 // });
