@@ -12,11 +12,14 @@
 <body>
     <!-- <textarea id='MyID'></textarea> -->
     <form>
-    <input type="text" autocomplete="off" class="form-control" placeholder="태그 목록" id="text_task">
-    <!-- <button type="submit" id="btn_add_task" class="btn btn-primary">추가</button> -->
+    <input type="text"
+    autocomplete="off"
+    class="form-control"
+    placeholder="태그 목록"
+    id="text_task">
+    <button type="submit" id="btn_add_task" class="btn btn-primary">추가</button>
    </form>           
-   <ul id = "list_tasks">
-   </ul>
+   <ul id = "list_tasks"></ul>
 </body>
 <script>
 // /* JavaScript markdown editor SimpleMDE */
@@ -29,21 +32,44 @@ var taskSubmit = document.getElementById('btn_add_task');
 var taskBox = document.getElementById('text_task');
 var taskList = document.getElementById('list_tasks');
 
+// document.addEventListener('click', function(e) {
+//     e.preventDefault();
+//     var task = taskBox.value.trim();
+//     var newLI = document.createElement('li');
+//     var element = newLI.appendChild(document.createTextNode(task));
+
+//     if (taskBox.value != "" || e.keyCode === 188)  {
+//         taskList.appendChild(newLI);
+//     }
+//     taskBox.value = '';
+// }, false);
+
+
 document.addEventListener('keydown', function(e) {
     var task = taskBox.value.trim();
     var newLI = document.createElement('li');
+    var removeBtn = document.createElement('button');
     var element = newLI.appendChild(document.createTextNode(task));
-    if (taskBox.value != "" && (e.keyCode === 188 || e.keyCode === 13))  {
+    if (taskBox.value != "" && (e.keyCode === 188 || e.keyCode === 13 || e.keyCode === 32))  {
         e.preventDefault();
         taskList.appendChild(newLI);
+        taskList.appendChild(removeBtn);
         taskBox.value = '';
+        removeBtn.addEventListener('click', function() {
+            removeBtn.parentNode.removeChild(removeBtn);
+            newLI.parentNode.removeChild(newLI);
+        });
     }
 }, false);
 
 
 // 똑같은 태그가 추가되면 안됨
-// , 이용해서도 추가되게 하기
+// , 이용해서도 추가되게 하기 (OK)
 // // 자동완성
+
+// 콤마만 있을 때 콤마가 출력이 됨 (문제)
+
+
 
 // document.addEventListener('keyup', function(e) {
 //     e.preventDefault();
@@ -57,3 +83,4 @@ document.addEventListener('keydown', function(e) {
 // });
 </script>
 </html>
+
